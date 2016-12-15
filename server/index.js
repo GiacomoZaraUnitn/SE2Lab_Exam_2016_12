@@ -282,7 +282,7 @@ app.post('/searchByMark', function(request, response)
 	var criteria;
 	var symbol;
 	var mark;
-	
+	var res = [];
 
 	
 
@@ -303,26 +303,29 @@ app.post('/searchByMark', function(request, response)
 
  	if (criteria!="not defined" && criteria!="body undefined"){
 
-		var student = studentManager.searchStudentMark(mark);
+		var students[] = studentManager.searchStudentMark(mark);
 
 		if (student != null){
-		
+			
+			for(var i = 0; i < students.length; i++){
 
-			if(symbol == ">"){
-				if(student.mark > mark){
-					response.writeHead(200, headers);
-					response.end(JSON.stringify(student));
+				if(symbol == ">"){
+					if(students[i].mark > mark){
+						res.push(students[i]);
+					}
 				}
-			}
-			else{
+				else{
 				
-				if(student.mark < mark){
-					response.writeHead(200, headers);
-					response.end(JSON.stringify(student));
+					if(students[i].mark < mark){
+						res.push(students[i]);
+					}
 				}
 			}
 		}
 	}
+
+	response.writeHead(200, headers);
+	response.end(JSON.stringify(res));
 }	
 		
 

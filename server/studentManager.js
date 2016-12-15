@@ -139,19 +139,26 @@ var insertStudent = function insertStudent(student)
 /**
  * @brief This function searches a student, given his mark
  * @param mark
- * @return the students if sound, null otherwise
+ * @return the students if found, null otherwise
  */
 var searchStudentMark = function searchStudentMark(mark)
 {
+    var existing = false;
+    var res = [];
     for (i=0; i < studentList.length; i++)
 	{
 		if (studentList[i].mark == mark)
 		{
-			return studentList[i];
+			res.push(studentList[i]);
+			existing = true;
 		}
 	}
     //if reach this point return null
-    return null;
+    if(existing){
+    	return res;
+    }
+    else{
+	return null;
 }
 
 
