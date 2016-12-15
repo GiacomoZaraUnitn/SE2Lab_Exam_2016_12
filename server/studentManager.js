@@ -136,6 +136,25 @@ var insertStudent = function insertStudent(student)
 //AGGIUNGERE QUI SOTTO NUOVE FUNZIONI
 
 
+/**
+ * @brief This function searches a student, given his mark
+ * @param mark
+ * @return the students if sound, null otherwise
+ */
+var searchStudentMark = function searchStudentMark(mark)
+{
+    for (i=0; i < studentList.length; i++)
+	{
+		if (studentList[i].mark == mark)
+		{
+			return studentList[i];
+		}
+	}
+    //if reach this point return null
+    return null;
+}
+
+
 
 //export functions
 exports.searchStudentID = searchStudentID; 
