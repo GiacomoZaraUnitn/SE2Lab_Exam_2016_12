@@ -288,35 +288,35 @@ app.post('/searchByMark', function(request, response)
 
 	if ( typeof request.body !== 'undefined' && request.body){
 
-		if (typeof request.body.criteria !== 'undefined' && request.body.criteria){
-			criteria = request.body.criteria;
-			symbol = criteria[0];
-			mark = Integer.parseInt(criteria[1]);
+		if (typeof request.body.mark !== 'undefined' && request.body.mark){
+			mark = request.body.mark;
+			symbol = mark[0];
+			markNumber = Integer.parseInt(mark[1]);
 		}	
 		else{
-			criteria = "not defined";
+			mark = "not defined";
 		}	
 	}
 	else{
-		criteria = "body undefined";
+		mark = "body undefined";
 	}
 
- 	if (criteria!="not defined" && criteria!="body undefined"){
+ 	if (mark!="not defined" && mark!="body undefined"){
 
-		var students[] = studentManager.searchStudentMark(mark);
+		var students[] = studentManager.searchStudentMark(markNumber);
 
 		if (student != null){
 			
 			for(var i = 0; i < students.length; i++){
 
 				if(symbol == ">"){
-					if(students[i].mark > mark){
+					if(students[i].mark > markNumber){
 						res.push(students[i]);
 					}
 				}
 				else{
 				
-					if(students[i].mark < mark){
+					if(students[i].mark < markNumber){
 						res.push(students[i]);
 					}
 				}
